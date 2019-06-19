@@ -86,6 +86,7 @@ document.onkeypress = function (event) {
 
         noOfBlank--;
         if (noOfBlank == 0) {
+            alert("You Won!!!!!");
             console.log("Bootcampl")
             win++;
             htmlNoOfWin.textContent = win;
