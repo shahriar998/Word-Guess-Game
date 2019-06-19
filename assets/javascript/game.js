@@ -39,7 +39,7 @@ var htmlNoOfLoss = document.getElementById("loss-count");
 function randomWord() {
     wordBreaker= [];
     blankArray= [];
-    
+    wrongGuess = [];
     console.log("Start randomWord function")
     var randomNumber = Math.floor(Math.random() * 5);
     computerRandomWord = computerWord[randomNumber];
@@ -85,7 +85,14 @@ document.onkeypress = function (event) {
         htmlWordtoGuess.textContent = blankArray.join(" ")
 
         noOfBlank--;
-        
+        if (noOfBlank == 0) {
+            console.log("Bootcampl")
+            win++;
+            htmlNoOfWin.textContent = win;
+            htmlNoOfGuess.textContent = 13;
+            blankArray = [];
+            randomWord();
+        }
         console.log("No of Blank " + noOfBlank);
         for (var i = keyPressArrayNumberCheck + 1; i < blankArray.length; i++) {
             console.log("I'm here")
@@ -113,11 +120,15 @@ document.onkeypress = function (event) {
 
         guess--;
         htmlNoOfGuess.textContent = guess;
+        wrongGuess.push(keyPressed);
+        htmlWrongGuess.textContent=wrongGuess;
+
         if (guess == 0) {
             loss++;
             htmlNoOfLoss.textContent = loss;
             htmlNoOfGuess.textContent = 13;
             blankArray = [];
+            
             randomWord();
 
         }
